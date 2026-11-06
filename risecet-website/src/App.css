@@ -1,0 +1,17 @@
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #ffffff;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* Base selection styling */
+::selection {
+  background: var(--teal-primary);
+  color: #ffffff;
+}

@@ -1,0 +1,109 @@
+.about-section {
+  padding: 100px 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 70px;
+  align-items: flex-start;
+}
+
+/* Left Column */
+.about-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.about-heading span {
+  color: var(--teal-primary);
+}
+
+.about-manifesto-link {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Right Column */
+.about-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-body-text {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.about-stat-card {
+  background: var(--bg-hero);
+  border: 1px solid rgba(16, 123, 133, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--teal-primary);
+  box-shadow: 0 10px 25px rgba(16, 123, 133, 0.12);
+}
+
+.stat-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--teal-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border: 1px solid rgba(16, 123, 133, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.stat-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
