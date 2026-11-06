@@ -49,13 +49,17 @@ const EdgeAICanvas = () => {
       alpha: true,
       powerPreference: 'high-performance',
     });
-    renderer.setSize(width, height);
+    renderer.setSize(width, height, false);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.4;
     rendererRef.current = renderer;
 
     container.innerHTML = '';
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.maxWidth = '100%';
+    renderer.domElement.style.display = 'block';
     container.appendChild(renderer.domElement);
 
     // 4. Orbit Controls
@@ -310,9 +314,10 @@ const EdgeAICanvas = () => {
       if (!container || !rendererRef.current || !cameraRef.current) return;
       const newW = container.clientWidth;
       const newH = container.clientHeight || 460;
+      if (newW === 0 || newH === 0) return;
       cameraRef.current.aspect = newW / newH;
       cameraRef.current.updateProjectionMatrix();
-      rendererRef.current.setSize(newW, newH);
+      rendererRef.current.setSize(newW, newH, false);
     };
 
     window.addEventListener('resize', handleResize);

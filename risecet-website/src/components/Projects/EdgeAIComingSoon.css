@@ -1,5 +1,7 @@
 .edge-ai-coming-soon-wrapper {
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .edge-ai-card {
@@ -10,6 +12,8 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Top Badge Row */

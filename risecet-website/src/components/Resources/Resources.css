@@ -2,6 +2,9 @@
   padding: 100px 0;
   background-color: var(--bg-hero);
   border-bottom: 1px solid rgba(16, 123, 133, 0.12);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .resources-header {

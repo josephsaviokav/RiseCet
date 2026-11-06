@@ -1,6 +1,7 @@
 .arduino-3d-wrapper {
   position: relative;
   width: 100%;
+  max-width: 100%;
   height: 480px;
   border-radius: var(--radius-xl);
   background: radial-gradient(circle at 50% 50%, rgba(16, 123, 133, 0.12) 0%, rgba(9, 18, 36, 0.02) 75%);
@@ -12,7 +13,16 @@
 .arduino-webgl-canvas {
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  overflow: hidden;
   cursor: grab;
+}
+
+.arduino-webgl-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  display: block;
 }
 
 .arduino-webgl-canvas:active {

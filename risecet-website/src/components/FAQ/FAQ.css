@@ -2,6 +2,9 @@
   padding: 100px 0;
   background-color: #ffffff;
   border-bottom: 1px solid var(--border-light);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .faq-container {
