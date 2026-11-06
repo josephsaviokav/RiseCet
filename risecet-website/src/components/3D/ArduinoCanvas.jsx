@@ -20,7 +20,6 @@ const ArduinoCanvas = () => {
   const [autoRotate, setAutoRotate] = useState(true);
   const [isWireframe, setIsWireframe] = useState(false);
   const [activePreset, setActivePreset] = useState('isometric');
-  const [activeAnnotation, setActiveAnnotation] = useState(null);
 
   useEffect(() => {
     const container = mountRef.current;
@@ -343,31 +342,6 @@ const ArduinoCanvas = () => {
               >
                 <Layers size={14} />
               </button>
-            </div>
-          </div>
-
-          {/* Interactive Component Callouts */}
-          <div className="canvas-annotations">
-            <div 
-              className={`annotation-pin pin-mcu ${activeAnnotation === 'mcu' ? 'annotation-expanded' : ''}`}
-              onClick={() => setActiveAnnotation(activeAnnotation === 'mcu' ? null : 'mcu')}
-            >
-              <div className="pin-pulse-dot"></div>
-              <div className="annotation-card">
-                <strong>ATmega328P</strong>
-                <span>8-Bit AVR RISC @ 16 MHz • 32KB Flash</span>
-              </div>
-            </div>
-
-            <div 
-              className={`annotation-pin pin-usb ${activeAnnotation === 'usb' ? 'annotation-expanded' : ''}`}
-              onClick={() => setActiveAnnotation(activeAnnotation === 'usb' ? null : 'usb')}
-            >
-              <div className="pin-pulse-dot"></div>
-              <div className="annotation-card">
-                <strong>USB-B Interface</strong>
-                <span>UART Serial Flashing & 5V Rail</span>
-              </div>
             </div>
           </div>
         </>
