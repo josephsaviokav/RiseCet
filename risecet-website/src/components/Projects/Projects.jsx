@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
-import ArduinoComingSoon from './ArduinoComingSoon';
+import EdgeAIComingSoon from './EdgeAIComingSoon';
 import './Projects.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -52,9 +52,9 @@ const Projects = () => {
           </a>
         </div>
 
-        {/* Dynamic Arduino GSAP Coming Soon Showcase */}
+        {/* Dynamic 3D Edge AI Neural Model & Coming Soon Showcase */}
         <div className="projects-coming-soon-wrapper">
-          <ArduinoComingSoon />
+          <EdgeAIComingSoon />
         </div>
       </div>
     </section>
