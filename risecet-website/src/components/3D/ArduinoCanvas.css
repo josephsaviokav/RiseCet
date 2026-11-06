@@ -1,0 +1,304 @@
+.arduino-3d-wrapper {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius-xl);
+  background: radial-gradient(circle at 50% 50%, rgba(16, 123, 133, 0.12) 0%, rgba(9, 18, 36, 0.02) 75%);
+  overflow: hidden;
+  border: 1px solid rgba(16, 123, 133, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.arduino-webgl-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.arduino-webgl-canvas:active {
+  cursor: grabbing;
+}
+
+/* Loading Screen */
+.canvas-loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(241, 247, 248, 0.95);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 20;
+}
+
+.loader-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(16, 123, 133, 0.2);
+  border-top-color: var(--teal-primary);
+  border-radius: 50%;
+  animation: spin-loader 0.9s linear infinite;
+}
+
+@keyframes spin-loader {
+  to { transform: rotate(360deg); }
+}
+
+.loader-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.loader-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.loader-bytes {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--teal-primary);
+}
+
+.loader-progress-track {
+  width: 200px;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.loader-progress-bar {
+  height: 100%;
+  background: var(--teal-primary);
+  border-radius: 3px;
+  transition: width 0.2s ease;
+}
+
+/* HUD Top */
+.canvas-hud-top {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hud-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 123, 133, 0.25);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--teal-primary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  pointer-events: auto;
+}
+
+.hud-icon-spin {
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* HUD Bottom Toolbar */
+.canvas-hud-bottom {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.preset-pill-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 123, 133, 0.2);
+  padding: 5px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  pointer-events: auto;
+}
+
+.preset-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-btn:hover {
+  color: var(--teal-primary);
+  background: rgba(16, 123, 133, 0.08);
+}
+
+.preset-active {
+  background: var(--teal-primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(16, 123, 133, 0.3);
+}
+
+.util-btn-group {
+  display: flex;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.util-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 123, 133, 0.2);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.util-icon-btn:hover {
+  color: var(--teal-primary);
+  border-color: var(--teal-primary);
+  transform: translateY(-2px);
+}
+
+.util-active {
+  background: var(--teal-primary);
+  color: #ffffff;
+  border-color: var(--teal-primary);
+}
+
+/* Annotations */
+.canvas-annotations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.annotation-pin {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pin-mcu {
+  top: 48%;
+  left: 54%;
+}
+
+.pin-usb {
+  top: 36%;
+  left: 24%;
+}
+
+.pin-pulse-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--teal-primary);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 12px rgba(16, 123, 133, 0.8);
+  animation: pulse-pin 2s infinite ease-in-out;
+}
+
+@keyframes pulse-pin {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.7; }
+}
+
+.annotation-card {
+  position: absolute;
+  top: -8px;
+  left: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 123, 133, 0.3);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  opacity: 0.85;
+  transition: all 0.25s ease;
+}
+
+.annotation-pin:hover .annotation-card,
+.annotation-expanded .annotation-card {
+  opacity: 1;
+  transform: translateX(4px);
+  border-color: var(--teal-primary);
+  box-shadow: 0 8px 25px rgba(16, 123, 133, 0.25);
+}
+
+.annotation-card strong {
+  font-size: 0.76rem;
+  color: var(--text-main);
+}
+
+.annotation-card span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--teal-primary);
+}
+
+@media (max-width: 768px) {
+  .arduino-3d-wrapper {
+    height: 380px;
+  }
+
+  .preset-pill-group span {
+    display: none;
+  }
+
+  .hud-badge span {
+    font-size: 0.65rem;
+  }
+}

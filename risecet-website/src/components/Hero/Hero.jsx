@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { ArrowRight, Cpu, Sparkles, Zap, ChevronRight, Activity } from 'lucide-react';
+import { ArrowRight, ChevronRight, Activity, Box, Image as ImageIcon, Sparkles } from 'lucide-react';
 import heroBoardImg from '../../assets/extracted/hero-board.png';
+import ArduinoCanvas from '../3D/ArduinoCanvas';
 import './Hero.css';
 
 const Hero = () => {
@@ -11,86 +12,51 @@ const Hero = () => {
   const subtitleRef = useRef(null);
   const buttonsRef = useRef(null);
   const metaRef = useRef(null);
-  const boardWrapperRef = useRef(null);
-  const tooltip1Ref = useRef(null);
-  const tooltip2Ref = useRef(null);
-  const tooltip3Ref = useRef(null);
-  const floatingEventRef = useRef(null);
+  const visualWrapperRef = useRef(null);
 
-  const [activeTooltip, setActiveTooltip] = useState(null);
+  // Toggle between 3D Interactive Model and 2D Spec Illustration
+  const [viewMode, setViewMode] = useState('3d'); // '3d' or '2d'
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Create master Timeline for hero entrance
+      // Master timeline for hero entrance
       const tl = gsap.timeline({ delay: 0.1 });
 
-      // 1. Badge entrance
       tl.fromTo(
         badgeRef.current,
         { opacity: 0, y: -20, scale: 0.95 },
         { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.7)' }
       )
-      // 2. Heading lines staggered
       .fromTo(
         '.hero-title-line',
         { opacity: 0, y: 40, skewY: 2 },
         { opacity: 1, y: 0, skewY: 0, duration: 0.75, stagger: 0.12, ease: 'power3.out' },
         '-=0.3'
       )
-      // 3. Subtitle fade up
       .fromTo(
         subtitleRef.current,
         { opacity: 0, y: 25 },
         { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
         '-=0.35'
       )
-      // 4. Buttons group
       .fromTo(
         buttonsRef.current.children,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
         '-=0.3'
       )
-      // 5. Meta info note
       .fromTo(
         metaRef.current,
         { opacity: 0 },
         { opacity: 1, duration: 0.5, ease: 'power2.out' },
         '-=0.2'
       )
-      // 6. Right side: Board illustration with 3D feel
       .fromTo(
-        boardWrapperRef.current,
-        { opacity: 0, x: 60, scale: 0.92, rotation: 3 },
-        { opacity: 1, x: 0, scale: 1, rotation: 0, duration: 1.1, ease: 'power3.out' },
-        '-=1.0'
-      )
-      // 7. Interactive tooltips pop in
-      .fromTo(
-        [tooltip1Ref.current, tooltip2Ref.current, tooltip3Ref.current, floatingEventRef.current],
-        { opacity: 0, scale: 0.8, y: 15 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.5, stagger: 0.12, ease: 'back.out(2)' },
-        '-=0.4'
+        visualWrapperRef.current,
+        { opacity: 0, x: 50, scale: 0.94 },
+        { opacity: 1, x: 0, scale: 1, duration: 1.0, ease: 'power3.out' },
+        '-=0.9'
       );
-
-      // Continuous gentle hover float for the board
-      gsap.to(boardWrapperRef.current, {
-        y: -12,
-        duration: 3.5,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-      });
-
-      // Hotspots pulsing glow
-      gsap.to('.hotspot-beacon', {
-        scale: 1.8,
-        opacity: 0,
-        duration: 2,
-        ease: 'power2.out',
-        repeat: -1,
-        stagger: 0.6,
-      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -139,77 +105,88 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Column: High-Res 3D Board with Hotspots */}
-        <div className="hero-visual">
-          <div ref={boardWrapperRef} className="board-card">
-            <div className="board-glow"></div>
-            <img 
-              src={heroBoardImg} 
-              alt="RISECET Embedded Development Platform" 
-              className="board-render"
-            />
+        {/* Right Column: Visual with 3D Arduino Uno & 2D Spec Toggle */}
+        <div ref={visualWrapperRef} className="hero-visual">
+          {/* View Mode Switcher Header */}
+          <div className="hero-view-switch-bar">
+            <div className="view-switch-pills">
+              <button 
+                className={`view-switch-btn ${viewMode === '3d' ? 'view-switch-active' : ''}`}
+                onClick={() => setViewMode('3d')}
+              >
+                <Box size={14} />
+                <span>3D Interactive UNO</span>
+                <span className="live-sparkle-pill">LIVE 3D</span>
+              </button>
+              <button 
+                className={`view-switch-btn ${viewMode === '2d' ? 'view-switch-active' : ''}`}
+                onClick={() => setViewMode('2d')}
+              >
+                <ImageIcon size={14} />
+                <span>Blueprint Schematic</span>
+              </button>
+            </div>
+          </div>
 
-            {/* Hotspot 1: MCU */}
-            <div 
-              ref={tooltip1Ref} 
-              className={`board-hotspot hotspot-top ${activeTooltip === 1 ? 'hotspot--active' : ''}`}
-              onMouseEnter={() => setActiveTooltip(1)}
-              onMouseLeave={() => setActiveTooltip(null)}
-            >
-              <div className="hotspot-pin">
-                <span className="hotspot-dot"></span>
-                <span className="hotspot-beacon"></span>
+          {/* Conditional Display: 3D WebGL vs 2D Render */}
+          {viewMode === '3d' ? (
+            <ArduinoCanvas />
+          ) : (
+            <div className="board-card">
+              <div className="board-glow"></div>
+              <img 
+                src={heroBoardImg} 
+                alt="RISECET Embedded Development Platform" 
+                className="board-render"
+              />
+
+              {/* Hotspot 1: MCU */}
+              <div className="board-hotspot hotspot-top">
+                <div className="hotspot-pin">
+                  <span className="hotspot-dot"></span>
+                  <span className="hotspot-beacon"></span>
+                </div>
+                <div className="hotspot-label">
+                  <span className="hotspot-title">Dual-Core MCU @ 240MHz</span>
+                  <span className="hotspot-desc">FreeRTOS & Low-Power Sleep</span>
+                </div>
               </div>
-              <div className="hotspot-label">
-                <span className="hotspot-title">Dual-Core MCU @ 240MHz</span>
-                <span className="hotspot-desc">FreeRTOS & Low-Power Sleep</span>
+
+              {/* Hotspot 2: TinyML Accelerator */}
+              <div className="board-hotspot hotspot-mid">
+                <div className="hotspot-pin">
+                  <span className="hotspot-dot"></span>
+                  <span className="hotspot-beacon"></span>
+                </div>
+                <div className="hotspot-label">
+                  <span className="hotspot-title">TinyML Accelerator</span>
+                  <span className="hotspot-desc">INT8 On-Device Inference</span>
+                </div>
+              </div>
+
+              {/* Hotspot 3: Sensor Bus */}
+              <div className="board-hotspot hotspot-bottom">
+                <div className="hotspot-pin">
+                  <span className="hotspot-dot"></span>
+                  <span className="hotspot-beacon"></span>
+                </div>
+                <div className="hotspot-label">
+                  <span className="hotspot-title">Sensor Fusion Bus</span>
+                  <span className="hotspot-desc">IMU + LiDAR + CAN Bus</span>
+                </div>
               </div>
             </div>
+          )}
 
-            {/* Hotspot 2: TinyML Accelerator */}
-            <div 
-              ref={tooltip2Ref} 
-              className={`board-hotspot hotspot-mid ${activeTooltip === 2 ? 'hotspot--active' : ''}`}
-              onMouseEnter={() => setActiveTooltip(2)}
-              onMouseLeave={() => setActiveTooltip(null)}
-            >
-              <div className="hotspot-pin">
-                <span className="hotspot-dot"></span>
-                <span className="hotspot-beacon"></span>
-              </div>
-              <div className="hotspot-label">
-                <span className="hotspot-title">TinyML Accelerator</span>
-                <span className="hotspot-desc">INT8 On-Device Inference</span>
-              </div>
+          {/* Floating Upcoming Event Card */}
+          <div className="floating-event-card">
+            <div className="event-icon">
+              <Activity size={18} />
             </div>
-
-            {/* Hotspot 3: Sensor Bus */}
-            <div 
-              ref={tooltip3Ref} 
-              className={`board-hotspot hotspot-bottom ${activeTooltip === 3 ? 'hotspot--active' : ''}`}
-              onMouseEnter={() => setActiveTooltip(3)}
-              onMouseLeave={() => setActiveTooltip(null)}
-            >
-              <div className="hotspot-pin">
-                <span className="hotspot-dot"></span>
-                <span className="hotspot-beacon"></span>
-              </div>
-              <div className="hotspot-label">
-                <span className="hotspot-title">Sensor Fusion Bus</span>
-                <span className="hotspot-desc">IMU + LiDAR + CAN Bus</span>
-              </div>
-            </div>
-
-            {/* Floating Upcoming Event Card */}
-            <div ref={floatingEventRef} className="floating-event-card">
-              <div className="event-icon">
-                <Activity size={18} />
-              </div>
-              <div className="event-details">
-                <span className="event-badge">Upcoming Workshop</span>
-                <span className="event-name">Edge AI 101: TinyML on Microcontrollers</span>
-                <span className="event-date">Thursday, 6:00 PM • Lab Room 402</span>
-              </div>
+            <div className="event-details">
+              <span className="event-badge">Upcoming Workshop</span>
+              <span className="event-name">Edge AI 101: TinyML on Microcontrollers</span>
+              <span className="event-date">Thursday, 6:00 PM • Lab Room 402</span>
             </div>
           </div>
         </div>
@@ -218,7 +195,7 @@ const Hero = () => {
       {/* Dark Tech Ticker Ribbon */}
       <div className="tech-ticker-bar">
         <div className="ticker-track">
-          <div className="ticker-item"><span>ARDUINO / ESP32</span></div>
+          <div className="ticker-item"><span>ARDUINO UNO / ESP32</span></div>
           <div className="ticker-sep">•</div>
           <div className="ticker-item"><span>RASPBERRY PI 5</span></div>
           <div className="ticker-sep">•</div>
@@ -234,8 +211,8 @@ const Hero = () => {
           <div className="ticker-sep">•</div>
           <div className="ticker-item"><span>CUSTOM PCB FABRICATION</span></div>
           <div className="ticker-sep">•</div>
-          {/* Repeat for seamless loop */}
-          <div className="ticker-item"><span>ARDUINO / ESP32</span></div>
+          {/* Looping repetition */}
+          <div className="ticker-item"><span>ARDUINO UNO / ESP32</span></div>
           <div className="ticker-sep">•</div>
           <div className="ticker-item"><span>RASPBERRY PI 5</span></div>
           <div className="ticker-sep">•</div>
