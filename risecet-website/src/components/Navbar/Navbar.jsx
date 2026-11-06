@@ -72,7 +72,8 @@ const Navbar = () => {
             <span>Discord</span>
           </a>
           <a href="#join" className="btn-primary-teal nav-btn-join">
-            <span>Join the Club</span>
+            <span className="join-text-full">Join the Club</span>
+            <span className="join-text-short">Join</span>
             <ArrowRight size={16} />
           </a>
         </div>

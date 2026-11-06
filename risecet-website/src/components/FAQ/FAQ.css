@@ -126,8 +126,40 @@
 }
 
 @media (max-width: 900px) {
+  .faq-section {
+    padding: 70px 0;
+  }
+
   .faq-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-heading {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .faq-question-btn {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .faq-q-text {
+    font-size: 0.95rem;
+  }
+
+  .answer--visible {
+    padding: 0 16px 16px;
+  }
+
+  .faq-answer-text {
+    font-size: 0.88rem;
+  }
+
+  .faq-ask-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

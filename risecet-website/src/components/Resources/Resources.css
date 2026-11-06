@@ -137,14 +137,35 @@
 }
 
 @media (max-width: 960px) {
+  .resources-section {
+    padding: 70px 0;
+  }
+
   .resources-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
     margin: 0 auto;
+    gap: 20px;
   }
 
   .resources-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resources-heading {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .resource-card {
+    padding: 24px 20px;
+  }
+
+  .resource-title {
+    font-size: 1.18rem;
   }
 }

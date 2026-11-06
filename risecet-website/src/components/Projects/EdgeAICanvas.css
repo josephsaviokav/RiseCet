@@ -196,23 +196,76 @@
     height: 420px;
   }
 
+  .edge-ai-hud-top {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .edge-ai-chip-pill {
+    padding: 5px 10px;
+    font-size: 0.65rem;
+  }
+
+  .pulse-shockwave-btn {
+    padding: 5px 10px;
+    font-size: 0.68rem;
+  }
+
   .edge-ai-metrics-hud {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: 60px 16px 0;
-    gap: 10px;
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    right: 12px;
+    justify-content: space-around;
+    gap: 8px;
     padding: 8px 12px;
   }
 
+  .metric-label {
+    font-size: 0.55rem;
+  }
+
+  .metric-val {
+    font-size: 0.78rem;
+  }
+
   .edge-ai-model-selector {
-    bottom: 35px;
+    bottom: 30px;
     left: 10px;
     right: 10px;
     overflow-x: auto;
+    padding: 4px;
+    gap: 4px;
   }
 
-  .model-pill-btn span {
+  .model-pill-btn {
+    padding: 5px 8px;
+    font-size: 0.68rem;
     white-space: nowrap;
+  }
+
+  .edge-ai-interaction-hint {
+    bottom: 8px;
+    font-size: 0.58rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .edge-ai-canvas-container {
+    height: 340px;
+  }
+
+  .edge-ai-chip-pill span:not(.pulse-cyan-dot) {
+    font-size: 0.6rem;
+  }
+
+  .edge-ai-metrics-hud {
+    top: 45px;
+    padding: 6px 10px;
+  }
+
+  .edge-ai-interaction-hint {
+    display: none;
   }
 }

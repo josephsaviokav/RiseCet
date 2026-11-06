@@ -137,44 +137,83 @@
 .mobile-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  z-index: 1001;
 }
 
 .mobile-toggle span {
-  width: 24px;
+  width: 22px;
   height: 2px;
   background: var(--text-main);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.mobile-toggle--active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle--active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-toggle--active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 900px) {
+  .site-header {
+    padding: 12px 0;
+  }
+
   .nav-links {
     position: fixed;
-    top: 72px;
-    left: 16px;
-    right: 16px;
-    background: #ffffff;
+    top: 68px;
+    left: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
     flex-direction: column;
-    padding: 24px;
-    gap: 16px;
-    transform: translateY(-20px);
+    padding: 24px 20px;
+    gap: 12px;
+    transform: translateY(-15px) scale(0.98);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
   }
 
   .nav-links--open {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .nav-links a {
+    font-size: 1.05rem;
+    padding: 10px 14px;
+    width: 100%;
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+  }
+
+  .nav-links a:hover {
+    background: var(--teal-50);
   }
 
   .mobile-toggle {
@@ -183,5 +222,42 @@
 
   .nav-discord-link {
     display: none;
+  }
+
+  .nav-btn-join {
+    padding: 8px 16px;
+    font-size: 0.82rem;
+  }
+}
+
+.join-text-short {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .brand-title {
+    font-size: 1.05rem;
+  }
+  
+  .brand-subtitle {
+    font-size: 0.6rem;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .join-text-full {
+    display: none;
+  }
+
+  .join-text-short {
+    display: inline;
+  }
+
+  .nav-btn-join {
+    padding: 8px 14px;
+    font-size: 0.8rem;
   }
 }

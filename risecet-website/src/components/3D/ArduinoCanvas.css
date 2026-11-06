@@ -223,3 +223,42 @@
     font-size: 0.65rem;
   }
 }
+
+@media (max-width: 480px) {
+  .arduino-3d-wrapper {
+    height: 320px;
+    border-radius: var(--radius-lg);
+  }
+
+  .canvas-hud-top {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .hud-badge {
+    padding: 4px 10px;
+    font-size: 0.62rem;
+  }
+
+  .canvas-hud-bottom {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+
+  .preset-pill-group {
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .preset-btn {
+    padding: 6px 8px;
+  }
+
+  .util-icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+}

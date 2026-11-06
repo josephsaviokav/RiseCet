@@ -98,12 +98,31 @@
 }
 
 @media (max-width: 900px) {
+  .about-section {
+    padding: 70px 0;
+  }
+
   .about-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 35px;
   }
 
   .about-stats-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-heading {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .about-body-text {
+    font-size: 1.02rem;
+    margin-bottom: 28px;
+  }
+
+  .about-stat-card {
+    padding: 20px 18px;
   }
 }
