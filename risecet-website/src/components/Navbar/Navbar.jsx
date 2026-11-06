@@ -74,20 +74,19 @@ const Navbar = () => {
           <a href="#join" className="btn-primary-teal nav-btn-join">
             <span className="join-text-full">Join the Club</span>
             <span className="join-text-short">Join</span>
-            <ArrowRight size={16} />
+            <ArrowRight size={15} />
           </a>
+          {/* Mobile Hamburger Toggle placed inside nav-actions to guarantee visibility */}
+          <button 
+            className={`mobile-toggle ${mobileMenuOpen ? 'mobile-toggle--active' : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-
-        {/* Mobile Hamburger Toggle */}
-        <button 
-          className={`mobile-toggle ${mobileMenuOpen ? 'mobile-toggle--active' : ''}`}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle Navigation"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
       </div>
     </header>
   );

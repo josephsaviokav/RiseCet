@@ -239,37 +239,84 @@
   }
 }
 
+.badge-text-short,
+.quant-text-short {
+  display: none;
+}
+
 @media (max-width: 480px) {
+  .badge-text-full,
+  .quant-text-full {
+    display: none;
+  }
+
+  .badge-text-short,
+  .quant-text-short {
+    display: inline;
+  }
+
+  .edge-ai-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
   .edge-ai-card {
-    padding: 22px 14px;
+    padding: 20px 16px;
     border-radius: var(--radius-lg);
   }
 
   .edge-ai-title {
-    font-size: clamp(1.8rem, 7vw, 2.2rem);
+    font-size: clamp(1.75rem, 6.5vw, 2.1rem);
+    line-height: 1.2;
+    margin-bottom: 12px;
   }
 
   .edge-ai-desc {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    line-height: 1.58;
+    margin-bottom: 20px;
   }
 
   .pipeline-specs-card {
     padding: 14px 12px;
+    margin-bottom: 20px;
+  }
+
+  .pipeline-header {
+    font-size: 0.62rem;
+    margin-bottom: 10px;
+  }
+
+  .pipeline-row {
+    gap: 10px;
+  }
+
+  .pipeline-details strong {
+    font-size: 0.8rem;
+  }
+
+  .pipeline-details span {
+    font-size: 0.68rem;
   }
 
   .notify-input-group {
     flex-direction: column;
     border-radius: var(--radius-md);
     padding: 8px;
+    gap: 8px;
   }
 
   .notify-email-input {
     padding: 8px 12px;
+    font-size: 16px; /* Prevents auto-zoom on iOS */
   }
 
   .notify-submit-btn {
     width: 100%;
     justify-content: center;
     border-radius: var(--radius-sm);
+    padding: 11px 16px;
   }
 }

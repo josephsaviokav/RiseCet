@@ -101,7 +101,10 @@ const Hero = () => {
               <span className="avatar-dot avatar-dot-2"></span>
               <span className="avatar-dot avatar-dot-3"></span>
             </div>
-            <p>Open to all students • No prior hardware experience required</p>
+            <p className="meta-text">
+              <span className="meta-text-full">Open to all students • No prior hardware experience required</span>
+              <span className="meta-text-short">Open to all students • No experience required</span>
+            </p>
           </div>
         </div>
 
@@ -115,15 +118,17 @@ const Hero = () => {
                 onClick={() => setViewMode('3d')}
               >
                 <Box size={14} />
-                <span>3D Interactive UNO</span>
-                <span className="live-sparkle-pill">LIVE 3D</span>
+                <span className="switch-text-full">3D Interactive UNO</span>
+                <span className="switch-text-short">3D UNO</span>
+                <span className="live-sparkle-pill">LIVE</span>
               </button>
               <button 
                 className={`view-switch-btn ${viewMode === '2d' ? 'view-switch-active' : ''}`}
                 onClick={() => setViewMode('2d')}
               >
                 <ImageIcon size={14} />
-                <span>Blueprint Schematic</span>
+                <span className="switch-text-full">Blueprint Schematic</span>
+                <span className="switch-text-short">Schematic</span>
               </button>
             </div>
           </div>

@@ -210,6 +210,10 @@
   border-color: var(--teal-primary);
 }
 
+.hud-text-short {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .arduino-3d-wrapper {
     height: 380px;
@@ -219,8 +223,16 @@
     display: none;
   }
 
+  .hud-text-full {
+    display: none;
+  }
+
+  .hud-text-short {
+    display: inline;
+  }
+
   .hud-badge span {
-    font-size: 0.65rem;
+    font-size: 0.68rem;
   }
 }
 

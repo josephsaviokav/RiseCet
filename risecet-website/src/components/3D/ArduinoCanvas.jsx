@@ -285,7 +285,8 @@ const ArduinoCanvas = () => {
           <div className="canvas-hud-top">
             <div className="hud-badge">
               <Rotate3D size={14} className="hud-icon-spin" />
-              <span>Interactive 3D Model • Drag to Orbit • Scroll to Zoom</span>
+              <span className="hud-text-full">Interactive 3D Model • Drag to Orbit • Scroll to Zoom</span>
+              <span className="hud-text-short">3D Model • Drag to Orbit</span>
             </div>
           </div>
 

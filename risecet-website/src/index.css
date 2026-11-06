@@ -63,11 +63,12 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
   :root {
-    --container-padding: 0 18px;
+    --container-padding: 0 20px;
   }
   html {
     font-size: 15px;
@@ -76,10 +77,10 @@ html {
 
 @media (max-width: 480px) {
   :root {
-    --container-padding: 0 14px;
+    --container-padding: 0 16px;
   }
   html {
-    font-size: 14px;
+    font-size: 14.5px;
   }
 }
 
@@ -91,6 +92,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, a, label {
+  overflow-wrap: break-word;
 }
 
 .container {

@@ -477,8 +477,23 @@
 }
 
 @media (max-width: 600px) {
+  .experiment-section {
+    padding: 60px 0;
+  }
+
+  .experiment-header {
+    margin-bottom: 30px;
+  }
+
   .experiment-heading {
-    font-size: clamp(2rem, 8vw, 2.5rem);
+    font-size: clamp(1.85rem, 7.5vw, 2.3rem);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .experiment-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
 
   .workbench-top-bar {
@@ -495,9 +510,14 @@
     display: none;
   }
 
+  .bench-sidebar {
+    padding: 16px 14px;
+    gap: 16px;
+  }
+
   .gsap-controller-bar {
-    padding: 14px;
-    gap: 12px;
+    padding: 12px 14px;
+    gap: 10px;
   }
 
   .controller-brand {
@@ -512,10 +532,22 @@
 
   .playback-buttons {
     order: 3;
+    gap: 6px;
   }
 
   .timescale-group {
     order: 4;
     margin-left: auto;
+    gap: 4px;
+  }
+
+  .ctrl-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .speed-btn {
+    padding: 3px 6px;
+    font-size: 0.68rem;
   }
 }

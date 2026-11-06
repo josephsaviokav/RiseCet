@@ -20,12 +20,14 @@ const EdgeAIComingSoon = () => {
         <div className="edge-ai-top-row">
           <div className="badge-tag edge-ai-badge">
             <span className="live-cyan-pulse"></span>
-            <span>ON-DEVICE TENSOR ENGINE // SHOWCASE IN PRODUCTION</span>
+            <span className="badge-text-full">ON-DEVICE TENSOR ENGINE // SHOWCASE IN PRODUCTION</span>
+            <span className="badge-text-short">TENSOR ENGINE // PRODUCTION</span>
           </div>
 
           <div className="quantization-tag">
             <Network size={14} />
-            <span>TINYML // INT8 NEURAL COMPILER</span>
+            <span className="quant-text-full">TINYML // INT8 NEURAL COMPILER</span>
+            <span className="quant-text-short">INT8 COMPILER</span>
           </div>
         </div>
 

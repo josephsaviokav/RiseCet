@@ -183,20 +183,43 @@
 
 @media (max-width: 480px) {
   .community-heading {
-    font-size: clamp(2rem, 8vw, 2.5rem);
+    font-size: clamp(1.85rem, 7.5vw, 2.3rem);
+    line-height: 1.15;
+  }
+
+  .community-link {
+    font-size: 0.88rem;
+  }
+
+  .photo-caption {
+    font-size: 0.66rem;
+    padding: 4px 10px;
+    bottom: 10px;
+    left: 10px;
   }
 
   .culture-feature-item {
-    padding: 18px 14px;
-    gap: 14px;
+    padding: 16px 14px;
+    gap: 12px;
+    border-radius: var(--radius-md);
   }
 
   .culture-icon-box {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
 
   .culture-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
+  }
+
+  .culture-tag {
+    font-size: 0.64rem;
+    padding: 2px 8px;
+  }
+
+  .culture-desc {
+    font-size: 0.84rem;
+    line-height: 1.55;
   }
 }

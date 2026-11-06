@@ -114,15 +114,32 @@
 
 @media (max-width: 480px) {
   .about-heading {
-    font-size: clamp(2rem, 8vw, 2.5rem);
+    font-size: clamp(1.85rem, 7.5vw, 2.3rem);
+    line-height: 1.18;
+    margin-bottom: 18px;
+  }
+
+  .about-manifesto-link {
+    font-size: 0.88rem;
   }
 
   .about-body-text {
-    font-size: 1.02rem;
-    margin-bottom: 28px;
+    font-size: 0.95rem;
+    line-height: 1.62;
+    margin-bottom: 24px;
   }
 
   .about-stat-card {
-    padding: 20px 18px;
+    padding: 18px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .stat-card-title {
+    font-size: 1.05rem;
+  }
+
+  .stat-card-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 }
